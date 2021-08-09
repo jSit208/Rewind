@@ -67,17 +67,77 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function HelloWorld() {
-                                alert("Hello World");
+                            /*
+                                Steps -
+                                    Retrieve values from Input Box
+                                    Reverse the String
+                                    Display the Reversed String to User
+                            */
+
+                            // Controller Function
+                            function getInput() {
+                                // Hide results alert box (Reset case, and ensure invisible is on by default) 
+                                document.getElementById("alert").classList.add("invisible");
+
+                                // Validation check for valid String - if Empty, display error message.
+                                let inputValue = document.getElementById("userString").value;
+                                if(!(inputValue == null || inputValue == "")){
+                                    let reversedString = reverseString(inputValue);
+                                    displayString(reversedString);
+                                } else {
+                                    displayError();
+                                }
+                            }
+
+                            // Logic Function
+                            function reverseString(inputValue){
+                                // Reverse the string using a for-loop
+                                let revString = "";
+                                for(let i = inputValue.length -1; i >= 0; i--){
+                                    revString += inputValue[i];
+                                }
+                                return revString;
+                            }
+
+                            // View Function - Display reversed string to user
+                            function displayString(reversedString) {
+                                // Show Alert Box and write Results to page
+                                document.getElementById("alert").classList.remove("invisible");
+                                document.getElementById("msg").innerHTML = `The reversed message is: ${reversedString}.`;
+                            }
+
+                            // View Function - Display error message to user
+                            function displayError(){
+                                // Show Alert Box and write Error Message to page
+                                document.getElementById("alert").classList.remove("invisible");
+                                document.getElementById("msg").innerHTML = `Please Enter a valid string.`
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code for the REWIND Project starts from the getInput function.</p>
+                    <hr>
+                    <h5>getInput</h5>
+                    <p>The getInput function is called when the "Reverse Me" button is pressed. The function retrieves the values from
+                        the page which is then validated and processed. If the string is valid, the string
+                        executes the reverseString function, followed by the displayString function. If the string is invalid, the displayError
+                        function is called.
+                    </p>
+                    <hr>
+                    <h6>reverseString</h6>
+                    <p>The reverseString function uses a local variable to hold values during the for-loop. The for-loop starts at the end of the string
+                        and goes backwards, each time adding to the local variable. Once it completes, the string is returned to the main control function.
+                    </p>
+                    <hr>
+                    <h6>displayString</h6>
+                    <p>The displayString function has two simple operations. Removal of the "invisible" class to show the resultbox, and passed-in message for the resultbox.
+                    </p>
+                    <hr>
+                    <h6>displayError</h6>
+                    <p>The displayError function has two simple operations. Removal of the "invisible" class to show the error message, and a
+                        error message to indicate why it was an error.
+                    </p>
                 </div>
             </div>
         </div>
